@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rodman Vodie</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Rodman Vodie</h1>
+    </header>
+    <main>
+        <section class="video-section">
+            <div class="video-container" id="player"></div>
+            <button id="saveButton" onclick="saveToWatchLater()">Save to Watch Later</button>
+        </section>
+        <aside id="watchLaterPanel">
+            <h2>Watch Later</h2>
+            <ul id="watchLaterList"></ul>
+        </aside>
+    </main>
+
+    <script>
+        // Function to generate a random video ID
+        function getRandomVideoId() {
+            const videoIds = [
+                'dQw4w9WgXcQ', // Rick Astley - Never Gonna Give You Up (Rickroll)
+                'jNQXAC9IVRw', // The Duck Song
+                '9bZkp7q19f0', // PSY - GANGNAM STYLE
+                'y6120QOlsfU', // MGMT - Kids
+                'kffacxfA7G4'  // Justin Bieber - Baby ft. Ludacris
+            ];
+            const randomIndex = Math.floor(Math.random() * videoIds.length);
+            return videoIds[randomIndex];
+        }
+
+        // Function to load a random video from YouTube API
+        async function loadRandomVideo() {
+            const apiKey = 'AIzaSyDux9LbH535gOpDAUNRKnUy2gV1Zl-FUeM';
+            const response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=random&key=${apiKey}`);
+            const data = await response.json();
+            const videoId = data.items[Math.floor(Math.random() * data.items.length)].id.videoId;
+            const playerElement = document.getElementById('player');
+            playerElement.innerHTML = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>`;
+        }
+
+        // Function to save current video to watch later
+        function saveToWatchLater() {
+            const videoId = document.querySelector('.video-container iframe').src.split('/').pop();
+            const watchLaterList = document.getElementById('watchLaterList');
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `<button onclick="removeFromWatchLater(this)">Remove</button> <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank">Video ${videoId}</a>`;
+            watchLaterList.appendChild(listItem);
+        }
+
+        // Function to remove video from watch later list
+        function removeFromWatchLater(button) {
+            const listItem = button.parentElement;
+            listItem.remove();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadRandomVideo();
+        });
+    </script>
+</body>
+</html>
