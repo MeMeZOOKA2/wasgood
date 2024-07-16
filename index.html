@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohamed Alvin Ismail</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+            color: #495057;
+        }
+        header p {
+            margin: 10px 0;
+            font-size: 1.5em;
+            color: #6c757d;
+        }
+        .cat-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .cat-gallery img {
+            max-width: 300px;
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .cat-gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Mohamed Alvin Ismail</h1>
+        <p>I'm a potato.</p>
+    </header>
+    <div class="cat-gallery">
+        <img src="https://placekitten.com/800/600" alt="A cute cat">
+        <img src="https://placekitten.com/801/600" alt="A cute cat">
+        <img src="https://placekitten.com/802/600" alt="A cute cat">
+        <img src="https://placekitten.com/803/600" alt="A cute cat">
+    </div>
+</body>
+</html>
